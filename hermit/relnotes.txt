@@ -1,0 +1,216 @@
+HERMIT Release Notes
+Version 1.3
+--------------------
+
+HERMIT by Michael D. Lore
+Copyright (C) 1996-2004 Michael D. Lore
+
+Contents
+
+    - Supported platforms
+    - Files included in the release
+    - Known problems and bugs
+    - Environment variables and other stuff
+    - Getting support
+    - Reporting a bug
+    - TODO list
+
+Supported platforms
+
+    HERMIT has been tested on Windows95, Windows98, Windows NT,
+    Windows 2000, Windows XP, and Windows 2003. Although I have not tested
+    it, there is no reason why it should not run on Windows ME just fine.
+
+Files included in the release
+
+    A complete HERMIT release includes the following files:
+
+    - hermit.exe        The HERMIT executable
+    - hermit.ico        HERMIT icon file
+    - license.txt       Terms of license
+    - relnotes.txt      The file you are reading
+    - hermit.txt        The HERMIT help file
+    - hermit.9x         The default set of HERMIT custom commands
+    - hermit.nt         The default commands for NT and above
+
+    You may not distribute modified or incomplete versions of HERMIT
+    without my prior consent.  See license.txt for full information
+    about licensing and distributing HERMIT.
+
+Known problems and bugs
+
+    - When HERMIT is launched directly from a shortcut in Windows95, the
+      keyboard response might seem slow and cursor movement can be
+      choppy.  To work around the problem, create a PIF file and launch
+      HERMIT using it.  The problem does not occur if HERMIT is run
+      from an MS-DOS prompt.
+
+    - If you change to a UNC directory name (using the Alt-G "Goto"
+      command), you will not be able to run your custom commands.  This
+      is because the Windows95 MS-DOS shell command.com and the Windows
+      NT command shell cmd.exe do not understand the concept of being
+      in a UNC directory.  A UNC directory looks like \\hostname\sharename.
+      You can use Alt-Z to run a shell if your SHELL or HERMIT_SHELL
+      environment variables specifies a different shell like the Korn Shell
+      in the MKS Toolkit.  (Additionally, sometimes the command.com or
+      cmd.exe shells do not start up when the current directory does not
+      have a "." or ".." entry.)
+
+    - You cannot enter or edit 8-bit characters in this release.
+
+    - When you launch HERMIT in Windows95, the cursor remains an hourglass
+      with an arrow (the "application launching" cursor) too long.
+
+    - Windows95 cannot recognize the icon stored in HERMIT.EXE.  As a work-
+      around, I have provided HERMIT.ICO.
+
+    - On Windows NT (and possibly Windows95), if you use a console font
+      like Lucidia Console and bring up a HERMIT dialog box, when the 
+      dialog goes away any special characters on the screen behind the
+      dialog might change into boxes.  This is harmless.
+
+    - When you resize your console using the console Properties, HERMIT
+      will not reflect these changes until it is run again.
+
+    - On Windows NT, if your Console settings in the Control Panel specify
+      QuickEdit mode, then running a custom command or DOS shell from
+      HERMIT will cause QuickEdit to turn itself on.  This can be annoying
+      because HERMIT supports use of the mouse.  Simply change the default
+      setting for QuickEdit to be off in the Control Panel.
+
+    - Under Windows95, sometimes the colors presented on the user screen
+      are not correct. This is because of bugs in the console API of
+      Windows95.
+
+Environment variables and other stuff
+
+    HERMIT supports a few environment variables.  One set of these is used
+    to determine what shell to launch when Alt-Z is pressed.  They are
+    searched in this order:
+
+    - HERMIT_SHELL is searched first, followed by
+    - SHELL, followed by
+    - COMSPEC
+
+    If none of these are set, HERMIT defaults to command.com on Windows95
+    and cmd.exe on Windows NT.
+
+    Another class of variables determine what the home directory is for the
+    Alt-H (or ~) command.  They are searched in this order:
+
+    - HERMIT_HOME is searched first, followed by
+    - HOME, followed by
+    - the location of your Personal folder (obtained from Windows)
+
+    If neither variable is set then Alt-H does nothing.
+
+    The last class of variable determines what shell to launch underneath
+    custom commands.  By default, HERMIT loads what is specified by COMSPEC
+    or cmd.exe on Windows NT and command.com on Windows95.  (HERMIT appends
+    a /c after the COMSPEC argument and then appends the text of your
+    command.)
+
+    The reason for this is to support "shell sorts of things" for the
+    custom commands, like pipes.  If I just did a CreateProcess on your
+    command then batch files and pipes would not work.
+
+    If you want to override the shell that is used, then define
+    HERMIT_COMSPEC with the shell you want AND the equivalent of the /c
+    parameter.  (HERMIT does not add /c when this variable is used because
+    /c might not be correct for that shell.)
+
+    A companion to HERMIT_COMSPEC is HERMIT_QUOTE. Normally, HERMIT will
+    not quote the command string being passed to the shell as follows:
+
+        cmd /c echo this is the command
+
+    If your shell needs the quoting you may define HERMIT_QUOTE
+    to the quote character to use and the command will be passed to
+    the shell as:
+
+        cmd /c "echo this is the command"
+
+    (assuming " is the quote character).
+
+    Usually, there will not be a reason to define HERMIT_QUOTE for normal
+    Windows shells, but it is necessary for Unix-like shells such as bash
+    and the Korn shell. (NOTE: Quotes around the command works for most
+    Unix-like shells and the cmd.exe in Windows NT, but it does NOT
+    work with command.com in Windows95.)
+
+    Another related variable is HERMIT_DIRSEP.  When using alternate shells,
+    the backslash \ may not be appropriate as a directory separator. By
+    defining HERMIT_DIRSEP to another value, HERMIT will replace each \
+    with the given value.  This applies only to using Alt-D in commands,
+    which asks HERMIT to insert the current directory name.  If you type
+    it yourself you should type the correct separator.
+
+Getting support
+
+    HERMIT is supported via electronic mail on an "as I am available" basis.
+    Polite, well-documented requests and problems will be given priority.
+    Impolite or incomplete requests will end up in the bit bucket.
+    Developing and supporting HERMIT is a hobby for me, but I will attempt
+    to deal with most reasonable questions and bug reports.  Please note:
+    You have not paid for HERMIT, nor have you paid for support.  Please
+    keep that in mind.
+
+    Send email to: hermit@skyegg.com
+	http://software.skyegg.com/
+	
+Reporting a bug
+
+    If you have found a problem that causes HERMIT to exit with an error
+    message, then add the following key to your registry (by using regedit
+    on Windows95 and regedt32 on Windows NT):
+
+    HKEY_CURRENT_USER\Software\Lore\Hermit\Debug
+
+    When this key exists, HERMIT will display file and line number
+    information for this type of error.
+
+    To report a bug, include the following information:
+
+        - Your name
+        - Your electronic mail address
+        - Your URL if you have a home page (optional)
+        - The platform you are running on (Windows95, Windows NT 4.0)
+        - The kind of computer you have (386, 486, Pentium)
+        - How much memory your computer has
+        - What kind of network you have connected
+        - The version and date of HERMIT you are running (obtained from
+          the HERMIT licensing screen)
+        - A good description of the problem, including full and
+          accurate error text
+
+    See "Getting Support" above for a full description of how to get
+    support.
+
+TODO list
+
+    - Handle console window resize events, so that HERMIT adjusts for the
+      new size.  Currently, you must re-run HERMIT to get it to notice.
+
+    - Add a file viewer, with print capability.
+
+    - Select files using a filter like *.cpp (currently you can filter the
+      list and then do a select all).
+
+    - Run custom commands in the background (you can do this now by using
+      the "start" command).
+
+    - Chain commands to one another.
+
+    - Add submenus of custom commands.
+
+    - Add a swap window feature, to save tags and view some other directory
+      for a while.
+
+    - Custom key assignments.  I designed them to be "Brief-like."
+
+    - Connect to the registry on another computer, so you can populate your
+      custom commands from there.
+
+    - Sure, I'll be happy to hear your ideas...
+
+End

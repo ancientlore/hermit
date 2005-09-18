@@ -1,0 +1,18 @@
+HERMIT License Agreement
+------------------------
+
+HERMIT by Michael D. Lore
+Copyright (C) 1996-2004 Michael D. Lore
+
+Good news! HERMIT is FREEware. You may use it for any legal purpose
+provided that the program is not modified in any way and is distributed
+in its entirety with all copyright notices intact.
+
+You agree that HERMIT has no warranty and in no cases shall the author be
+held liable for any problems encountered as a result of using HERMIT.
+
+Additionally, you agree that your use of HERMIT does not entitle you to
+technical support, free upgrades, or any other services from the author.
+
+hermit@skyegg.com
+http://software.skyegg.com/

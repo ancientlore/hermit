@@ -1,0 +1,300 @@
+HERMIT User's Guide
+Version 1.3
+-------------------
+
+HERMIT by Michael D. Lore
+Copyright (C) 1996-2004 Michael D. Lore
+Please see license.txt for important licensing information.
+
+
+
+INTRODUCTION
+
+HERMIT is a great program for people who spend a lot of time in a console
+based shell, like command.com under Windows98, cmd.exe under Windows 2000,
+or other shells that run on Win32 like the Korn shell or bash.
+
+HERMIT makes it easy to move around directories, move back-and-forth
+between them, and jump around to lots of places. HERMIT constantly
+displays the directory listing for the directory that you are in.
+
+In addition, HERMIT contains powerful text substitution that makes it
+easy to build command lines to operate on multiple files at the touch of
+a single key. For example, I can bring up a text editor like VIM by
+"tagging" the files in the directory listing and pressing "V". A command
+like "VIM !q" could be associated with "V", in which the "!q" is
+replaced with all the files I selected.
+
+HERMIT is a small, easy to learn, and consistent interface. It's like being
+in your shell, except that you can always see your directory listing and
+command output, and you can easily build powerful commands with minimal
+typing.
+
+This document assumes you have some familiarity with MS-DOS shells and how
+commands are executed within them.
+
+
+
+GENERAL USER INTERFACE INFORMATION
+
+The HERMIT user interface runs in a command shell under Windows95 and
+Windows 2000. The user interface displays a directory listing that you can
+scroll through, a title bar that shows the current directory and file
+filtering information, and a status bar that shows additional file
+information, error and information messages, and keyboard hints.
+
+The keyboard usage in HERMIT is very simple. Almost all HERMIT commands are
+accessed by holding the Alt key and pressing a letter or number. The
+function keys (F1 to F12) serve as shortcuts for many of the commands. Some
+commands have single character shortcuts that may be more intuitive to some
+users. The command set was designed to be "Brief-like," which doesn't mean
+too much because HERMIT is not a text editor.
+
+Pressing the Ctrl (Control) key and a letter or number is used to jump to
+another directory location.  Letters are used to jump to new drives. Numbers
+are reserved for bookmarks (saved directory locations).
+
+Pressing a single letter or digit executes a saved command. HERMIT has
+highly customizable ways of formulating a command line based on what files
+are selected. This allows you to save a lot of typing. HERMIT can run a
+command many times for different files, or pass a list of the selected files
+to a single command. The section on custom commands describes this
+capability in more detail.
+
+The HERMIT user interface consists of dialogs, lists, text-entry fields, and
+radio options. Only lists can be controlled by the mouse. All user interface
+elements are controlled by standard, intuitive commands.  Arrow keys are
+used to move around and scroll lists (in addition to Home, End, PgDn, and
+PgUp). Enter and Esc are used to confirm or cancel dialogs. Text-entry
+fields also utilize Backspace and the up-arrow to get a history of what you
+have typed before.
+
+Radio options appear in dialogs and are simple words presented with a
+highlighted character that is used to switch the option on. The currently
+set option presents the entire word in a different color.
+
+I don't suspect these basic user interface commands will pose any problem
+for users. However, since HERMIT is a console program instead of a graphical
+user interface, it may be difficult for novice users to recognize the user
+interface elements that appear on the screen. In these cases, look for
+different colors and try using single letters to turn on options and arrow
+keys to make things move.  In some lists that are presented, pressing Enter
+brings up a sub-dialog for the selected list item.
+
+
+
+KEYBOARD SUMMARY
+
+This section presents an overview of all the HERMIT commands. Unusual
+capatilization (like seTup) is used to help you mentally associate
+a word with a command (like Alt-T).
+
+  General:
+    F1                  displays help.
+    Alt-C or F2         displays the Command dialog, which lists all
+                        commands and a brief description for each.
+    $                   displays the licen$ing screen.
+    Alt-T               displays the seTup options. These options allow
+                        you to set the color scheme, import and export
+                        your custom commands, and register or unregister
+                        Component Object Model DLL servers.
+
+  Switching Directories:
+    Ctl-A to Ctl-Z      go to the directory indicated by the letter pressed.
+    Alt-G or F6         Goto a new directory (prompts you to type it in).
+    Alt-V or F4         go back to the preVious directory.
+    Left Arrow or Esc   change to parent directory.
+    Right Arrow         change to subdirectory that is highlighted by the
+                        cursor.
+    Alt-H or ~          switch to Home directory (indicated by HERMIT_HOME
+                        or HOME environment variables). ~ always goes to the
+                        My Documents directory.
+
+  Bookmarks:
+    Ctl-0 to Ctl-9      change to directory set in the chosen bookmark.
+    Alt-0 to Alt-9      assign the current directory to the specified bookmark.
+    Alt-B               display the Bookmarks and even pick one.
+
+  Directory Listing:
+    Alt-F           Filter the file listing with Windows-style wildcard
+                    characters "*" and "?".
+    Alt-S           displays the Sort dialog to specify how to sort the
+                    directory listing.
+    Alt-R or F5     Refresh the directory listing.
+    Up Arrow        move the cursor up.
+    Down Arrow      move the cursor down.
+    Home            move the cursor to the first item.
+    End             move the cursor to the last item.
+    PgUp            move the cursor up one page.
+    PgDn            move the cursor down one page.
+
+  Tagging Files
+    +               tag the file under the cursor.
+    -               un-tag the file under the cursor.
+    Spacebar        alternate the tagged status of the file under the
+                    cursor.
+    Alt-Plus        tag all files in the directory.
+    Alt-Minus       un-tag all files in the directory.
+    Alt-E           rE-tag files that were tagged before a command was
+                    executed on them. (Executing a command on a tagged
+                    file puts it into a "sort of tagged" state; using
+                    Alt-E tags all of the files in this state.)
+
+  Shells and Commands
+    Tab or Backtab  display extended information about the currently
+                    tagged files.
+    Alt-U           show the User screen. The user screen is the screen
+                    where the output of your commands goes.
+    Alt-Z           launch the shell specified by the HERMIT_SHELL, SHELL,
+                    or COMSPEC environment variables.
+    Enter           run associated program command. This prompts you for
+                    the "actions" Windows knows about for the given file
+                    type like "open" or "edit", and allows you to choose
+                    one.
+    Alt-O           Open the file via a Windows association.
+    Alt-P           Print the file via a Windows association.
+    Alt-N or F3     ruN a command (prompts you to type it in).
+    Alt-A           Assign custom commands to keys.
+    Alt-Y           display a list of Your custom commands to choose from.
+    Alt-M           run your custom commands on Multiple files.
+    Alt-L           set an environment variabLe. Also allows you to unset
+                    one.
+    Alt-I           display sytem and disk Information.
+
+  Exiting the Program:
+    Alt-X           eXit.
+
+
+
+MOUSE SUMMARY
+
+    Left button click - puts the curson on the file in the list
+    Right button click - move up a directory level
+    Left button double-click - on a directory, changes to that directory.
+        on a file, launches the associated application
+    Shift Left button click - selects file
+    Ctrl Left button click - selects or deselects a file
+    Left button click in title bar - move cursor to top
+    Right button click in title bar - move cursor to bottom
+    Left button click in status bar - move cursor to bottom
+    Right button click in status bar - move cursor to top
+
+
+
+RUNNING COMMANDS
+
+Commands can be entered manually by typing Alt-N or assigned directly to
+letter or number keys. Pressing a single key can execute commands on a large
+group of files that you have selected, or on the currently highlighted file.
+
+There are several special character sequences which, when inserted into your
+commands, are replaced with information about the tagged files.
+
+  !f  Add selected file name (file.ext)
+      When a !f is encountered the current file name is inserted into
+      the command. For instance, the command:
+          echo !f
+      might be expanded to:
+          echo autoexec.bat
+
+  !d  Add current directory (c:\dir\subdir)
+      When a !d is encountered the current directory path is inserted
+      into the command. For instance, the command:
+          echo !d
+      might be expanded to:
+          echo c:\
+
+  !b  Add base file name without extension (file)
+      When a !b is encountered, the current file's base name is inserted
+      without the extension. For instance, the command:
+          echo !b
+      might be expanded to:
+          echo autoexec
+
+  !v  Add the drive leter (c:)
+      When a !v is encountered, the drive letter or first part of a UNC
+      name is inserted. For example, the command:
+          echo !v
+      might be expanded to:
+          echo c:
+      or:
+          echo \\kiki\d$
+
+  !t  Add the path only (\dir\subdir)
+      When a !t is encountered, the path without a drive letter or UNC
+      name is inserted. For example, the command:
+          echo !t
+      might be expanded to:
+          echo \dev\hermit
+
+  !p  Prompt me for text at this location
+      When a !p is encountered, HERMIT will prompt you to enter text that
+      is inserted into the command. This is really useful for entering
+      command switches, file names, and so forth. It can also be used
+      as a "are you sure" mechanism. On all of my "dangerous" commands,
+      I place a !p so that executing the command by accident would still
+      require me to press return to continue.
+
+  !m  Insert the names of all the tagged files here
+      Many commands can operate on multiple files. When a !m is
+      encountered, all selected files are inserted, separated by a space.
+      For instance, if two files are selected then the command:
+          echo !m
+      might expand to:
+          echo autoexec.bat config.sys
+
+  !q  Insert the names of all the tagged files here, each in quotes
+      The !q sequence has the same behavior as !m, except that quotes
+      are placed around the command. For instance, the command:
+          echo !q
+      might expand to:
+          echo "autoexec.bat" "config.sys"
+      This is useful when long file names containing spaces are used.
+
+  !i  Return immediately after executing the command
+      A !i does not expand to anything but instead causes HERMIT to
+      return to the file listing immediately after executing the command,
+      instead of waiting for you to press a key.
+
+  !a  Refresh the file listing automatically after executing the command
+      A !a sequence does not expand to anything but instead causes HERMIT
+      to refresh the file listing when it is next drawn. This is useful
+      for getting the new file listing after running a command that adds,
+      deletes, or renames files.
+
+  !!  Insert single !
+      If you need a ! character, use two instead so that the parser
+      will not try to insert anything.
+
+Here is an advanced example of a command that works nice on
+Windows 2000:
+
+  echo off && for %f in (!q) do (echo %f && attrib !p %f)!i!a
+
+This command is used to change the attributes of all of the selected
+files, or the file under the cursor if none are selected. It prompts
+for the arguments to attrib, which could be -r to make the files
+writable, and echos the name of each file as it is changed.  The
+command returns immediately because of the !i and also refreshes the
+file listing because of the !a (which allows you to see the changed
+attributes).
+
+If you assign this command to the letter A, then you can simply mark
+all the files that you want to change, press A, type -r or +r, and
+your attributes will be changed. That sure beats typing:
+  attrib -r myfile.txt
+for every file you need to change!
+
+
+
+OTHER INFORMATION
+
+The best way to get to know HERMIT is to try it out. Most of the things
+HERMIT does are harmless, but you should experiment with custom commands
+using commands like ECHO when you are testing things out. This is especially
+true when building complex scripted commands for deletion and other
+operations that you may not be able to undo.
+
+Have fun,
+
+Michael Lore

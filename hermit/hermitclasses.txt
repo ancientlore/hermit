@@ -1,0 +1,84 @@
+Hermit Classes
+--------------
+
+Lib	Class										Desc
+--- -------------------------------------------	----------------------------
+	ErrInfo										Error info structure
+	errorFreezer								Locks error info
+	PtrBase										Pase of smart pointer
+		Ptr<T>									Smart pointer
+		ArrayPtr<T>								Smart pointer for arrays
+	RegistryKey									Registry key
+T	BitArray									Bit array used by heaps
+T	Heap										Heap
+		THeapBase								Base heap used in template
+			THeap<T>							Heap used in template
+T	HeapPage									Heap page
+T	Sortable									Sortable (can be in Tree)
+		TSortable<T>							Sortable for template
+T	Node										Tree node
+T	NodeHolder									Holds a tree node
+T	Tree										Tree
+	TTree<T>									Template-based tree
+H		FileTree								Holds File objects
+C		HandlerTree								Holds event handlers
+C		WindowPtrTree							Holds window pointers
+T	TreeIterator								Tree iterator
+	TTreeIterator<T>							Tree iterator for templates
+H		FileIterator							File iterator
+C		HandlerIterator							Event handler iterator
+C		WindowPtrIterator						Window pointer iterator
+C	Event										Event (key, mouse, event)
+C	HandlerInfo									Used internally for handlers
+C	InputModeSwitcher							Switches standard input mode
+C	Processor									Able to handle an event
+C		Runable									Has event loop
+C			Window								Window object
+C				Scroller						Scroller object
+H					AssignCommandsScroller		Assign commands
+H					ConfigScroller				HERMIT config
+H					CommandScroller				HERMIT commands
+H					COMScroller					COM viewer
+H					FileScroller				File listing
+H					PickCommandScroller			Pick command
+H					VerbScroller				Shell verbs
+C				Status							Status bar
+C				TitleBar						Title bar
+C				Popup							Pop-up window
+C					AskDialog					Yes/No dialog
+C					Edit						Single-line text edit
+H						RunEdit					Handles extra run keys
+C					InputDialog					Input dialog
+H					AssignCommandsDialog		Pick command to assign
+H					AssignCommandDialog			Assign command info
+H					BookmarkDialog				Pick bookmark
+H					ConfigDialog				Pick config setting
+H					CommandDialog				Pick command
+H					FilterDialog				Set file filter
+H					GotoDialog					Goto directory dialog
+H					PickCommandsDialog			Pick custom command
+H					PromptDialog				Prompt for parameter
+H					RunDialog					Run dialog
+H					SortDialog					Sort dialog
+H					VerbDialog					Shell verb dialog
+C			Screen								Screen - main console window
+H				Application						Hermit application
+H				HelpScreen						Help screen
+H				LicenseScreen					License screen
+H				PrintfScreen					General printf screen
+H				ViewerScreen					COM viewer screen
+C	History										Stores input history
+C	Scrollable									Able to be scrolled
+C		ScrollMessage							Scrolls array of messages
+H		ScrollAssignCommands					Scrolls command keys
+H		ScrollConfig							Scrolls HERMIT config
+H		ScrollCommands							Scrolls HERMIT commands
+H		ScrollCOM								Scrolls COM view
+H		ScrollDir (see also Directory)			Scrolls directory listing
+H		ScrollPrintf							Scrolls printf messages
+H		ScrollVerbs								Scrolls	shell verbs
+H	FileSortInfo								Retails file sort info
+H	File										File object
+H	Directory									Directory listing object
+H		ScrollDir (see also Scrollable)			Scrolls directory listing
+H	ScrollPrintfElem							Printf item

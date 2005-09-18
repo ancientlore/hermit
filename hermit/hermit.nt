@@ -1,0 +1,11 @@
+A,echo off && for %f in (!q) do (echo %f && attrib !p %f)!i!a
+C,echo off && for %f in (!q) do (echo %f && copy %f !p)!a!i
+D,echo off && for %f in (!q) do (echo %f && del !p %f)!i!a
+G,"!b"
+I,ipconfig /all
+K,rmdir /s/q "!f"!p!a!i
+M,echo off && for %f in (!q) do (echo %f && move %f !p)!i!a
+N,notepad "!f"
+R,route -p print
+S,start "!f"
+T,type "!f" | more

@@ -1,0 +1,7 @@
+C,copy "!f" !p
+M,move "!f" !p
+D,del "!f" !p
+N,notepad "!f"
+G,"!b"
+S,start "!f"
+T,type "!f" | more
