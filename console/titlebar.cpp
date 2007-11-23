@@ -27,7 +27,7 @@ void TitleBar::setTitleText (const char *txt)
 	mText = 0;
     }
     if (txt != 0) {
-	mText = strdup (txt);
+	mText = _strdup (txt);
 	if (mText == 0)
 	    throw AppException (WHERE, ERR_OUT_OF_MEMORY);
     }
@@ -42,7 +42,7 @@ void TitleBar::setTitleTail (const char *txt)
 	mTailWidth = 0;
     }
     if (txt != 0) {
-	mTail = strdup (txt);
+	mTail = _strdup (txt);
 	if (mTail == 0)
 	    throw AppException (WHERE, ERR_OUT_OF_MEMORY);
 	mTailWidth = (int) strlen (mTail);

@@ -52,27 +52,27 @@ struct HandlerInfo {
     }
 };
 
-inline operator == (const HandlerInfo& a, const HandlerInfo& b) {
+inline int operator == (const HandlerInfo& a, const HandlerInfo& b) {
     return (a.compare (b) == 0);
 }
 
-inline operator <= (const HandlerInfo& a, const HandlerInfo& b) {
+inline int operator <= (const HandlerInfo& a, const HandlerInfo& b) {
     return (a.compare (b) <= 0);
 }
 
-inline operator >= (const HandlerInfo& a, const HandlerInfo& b) {
+inline int operator >= (const HandlerInfo& a, const HandlerInfo& b) {
     return (a.compare (b) >= 0);
 }
 
-inline operator < (const HandlerInfo& a, const HandlerInfo& b) {
+inline int operator < (const HandlerInfo& a, const HandlerInfo& b) {
     return (a.compare (b) < 0);
 }
 
-inline operator > (const HandlerInfo& a, const HandlerInfo& b) {
+inline int operator > (const HandlerInfo& a, const HandlerInfo& b) {
     return (a.compare (b) > 0);
 }
 
-inline operator != (const HandlerInfo& a, const HandlerInfo& b) {
+inline int operator != (const HandlerInfo& a, const HandlerInfo& b) {
     return (a.compare (b) != 0);
 }
 

@@ -2,7 +2,7 @@ HERMIT License Agreement
 ------------------------
 
 HERMIT by Michael D. Lore
-Copyright (C) 1996-2004 Michael D. Lore
+Copyright (C) 1996-2008 Michael D. Lore
 
 Good news! HERMIT is FREEware. You may use it for any legal purpose
 provided that the program is not modified in any way and is distributed

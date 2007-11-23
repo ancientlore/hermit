@@ -26,7 +26,7 @@ History::History (const char *name) : mName (name)
 	    wsprintf (str, "%d", j);
 	    char *value = k.queryValue (str, type);
 	    if (type == REG_SZ  &&  value != 0  &&  value[0] != '\0') {
-		mpText[j] = strdup (value);
+		mpText[j] = _strdup (value);
 		delete [] value;
 		if (mpText[j] == 0)
 		    throw AppException (WHERE, ERR_OUT_OF_MEMORY);
@@ -90,7 +90,7 @@ void History::add (const char *text)
 	free (mpText[HIST_SIZE - 1]);
     for (i = HIST_SIZE - 1; i > 0; i--)
 	mpText[i] = mpText[i - 1];
-    mpText[0] = strdup (text);
+    mpText[0] = _strdup (text);
     if (mpText[0] == 0)
 	throw AppException (WHERE, ERR_OUT_OF_MEMORY);
 }

@@ -60,7 +60,7 @@ void FileScroller::loadBookmarks ()
 	    wsprintf (str, "%d", j);
 	    char *value = k.queryValue (str, type);
 	    if (type == REG_SZ  &&  value != 0  &&  value[0] != '\0') {
-		mpBookmark[j] = strdup (value);
+		mpBookmark[j] = _strdup (value);
 		delete [] value;
 		if (mpBookmark[j] == 0)
 		    throw AppException (WHERE, ERR_OUT_OF_MEMORY);
@@ -253,7 +253,7 @@ void FileScroller::gotoLocation (const char *where, int fileCursor, int screenCu
     mLastFileCursor = mScrollDir.getCursor ();
     mLastScrCursor = mCursor;
     char *lastDir = mpLastDir;
-    mpLastDir = strdup (mScrollDir.getDirName ());
+    mpLastDir = _strdup (mScrollDir.getDirName ());
     if (mpLastDir == 0)
         throw AppException (WHERE, ERR_OUT_OF_MEMORY);
 
@@ -375,7 +375,7 @@ void FileScroller::setBookmark (const Event& event)
 	mBookmarkScrCursor[bit] = mCursor;
 	if (mpBookmark[bit] != 0)
     	    free (mpBookmark[bit]);
-	mpBookmark[bit] = strdup (mScrollDir.getDirName ());
+	mpBookmark[bit] = _strdup (mScrollDir.getDirName ());
 	if (mpBookmark[bit] == 0)
 	    throw AppException (WHERE, ERR_OUT_OF_MEMORY);
 	char str[40];

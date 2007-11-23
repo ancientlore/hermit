@@ -165,7 +165,7 @@ int File::compare (const File& file) const
 
 int File::compareName (const File& file) const
 {
-    return stricmp (mData.cFileName, file.mData.cFileName);
+    return _stricmp (mData.cFileName, file.mData.cFileName);
 }
 
 int File::compareExt (const File& file) const
@@ -179,7 +179,7 @@ int File::compareExt (const File& file) const
     else if (ptrB == 0)
 	return -1;
     else
-	return stricmp (ptrA, ptrB);
+	return _stricmp (ptrA, ptrB);
 }
 
 int File::compareDate (const File& file) const

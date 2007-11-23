@@ -41,7 +41,7 @@ void ScrollPrintfElem::set (int l, ColorEntry c, const char *t)
     color = c;
     if (text)
 	free (text);
-    text = strdup (t);
+    text = _strdup (t);
     if (text == 0)
 	throw AppException (WHERE, ERR_OUT_OF_MEMORY);
 }

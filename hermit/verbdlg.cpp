@@ -93,7 +93,7 @@ void VerbDialog::buildFileVector (const File& file)
 		    catch (const std::exception&) {
 			failed = 1;
 		    }
-		    if (!failed  &&  mVerbC < 20  &&  stricmp (val, "printto") != 0) {
+		    if (!failed  &&  mVerbC < 20  &&  _stricmp (val, "printto") != 0) {
 			mVerbV[mVerbC] = strDupNew (val);
 			mVerbC++;
 		    }

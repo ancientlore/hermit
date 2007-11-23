@@ -15,6 +15,7 @@
 #include "registry.h"
 
 #if 1
+#if 0
 typedef enum _STREAM_INFO_LEVELS {
     FindStreamInfoStandard,
     FindStreamInfoMaxInfoLevel
@@ -24,6 +25,7 @@ typedef struct _WIN32_FIND_STREAM_DATA {
     LARGE_INTEGER StreamSize;
     WCHAR cStreamName[MAX_PATH + 36];
 } WIN32_FIND_STREAM_DATA, *PWIN32_FIND_STREAM_DATA;
+#endif
 
 typedef HANDLE (WINAPI *FindFirstStreamWFunc) (
     LPCWSTR lpFileName,
@@ -348,7 +350,7 @@ const char *Application::formatGiant (const LONGLONG& val, char *str)
 	value = value / 10;
     } while (value > 0);
 
-    strrev (str);
+    _strrev (str);
 
     return str;
 }

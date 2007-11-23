@@ -118,8 +118,8 @@ public:
 	    return mp;
     }
 
-    friend operator < (const Ptr<T>& a, const Ptr<T>& b);
-    friend operator > (const Ptr<T>& a, const Ptr<T>& b);
+    friend int operator < (const Ptr<T>& a, const Ptr<T>& b);
+    friend int operator > (const Ptr<T>& a, const Ptr<T>& b);
 };
 
 template <class T>
