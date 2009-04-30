@@ -98,9 +98,9 @@ void Popup::drawBorder (const char *title)
     for (int y = mY; y < mY + mHeight; y++) {
 	if (y == mY) {				// First row
 	    myScreen.fillColors (mX, y, getColor (cePopupBorder), mWidth);
-	    myScreen.fillChar (mX, y, '\xC9', 1);
-	    myScreen.fillChar (mX + 1, y, '\xCD', mWidth - 2);
-	    myScreen.fillChar (mX + mWidth - 1, y, '\xBB', 1);
+	    myScreen.fillChar (mX, y, ' ', 1); // \xC9
+	    myScreen.fillChar (mX + 1, y, ' ', mWidth - 2); // \xCD
+	    myScreen.fillChar (mX + mWidth - 1, y, ' ', 1); // \xBB
 	    if (title) {
 		int len = (int) strlen (title);
 		if (len > mWidth - 2)
@@ -111,14 +111,14 @@ void Popup::drawBorder (const char *title)
     	}
 	else if (y == mY + mHeight - 1) {	// Last row
 	    myScreen.fillColors (mX, y, getColor (cePopupBorder), mWidth);
-	    myScreen.fillChar (mX, y, '\xC8', 1);
-	    myScreen.fillChar (mX + 1, y, '\xCD', mWidth - 2);
-	    myScreen.fillChar (mX + mWidth - 1, y, '\xBC', 1);
+	    myScreen.fillChar (mX, y, ' ', 1); // \xC8
+	    myScreen.fillChar (mX + 1, y, ' ', mWidth - 2); // \xCD
+	    myScreen.fillChar (mX + mWidth - 1, y, ' ', 1); // \xBC
 	}
 	else {					// Normal rows
-	    myScreen.fillChar (mX, y, '\xBA', 1);
+	    myScreen.fillChar (mX, y, ' ', 1); // \xBA
 	    myScreen.fillColors (mX, y, getColor (cePopupBorder), 1);
-	    myScreen.fillChar (mX + mWidth - 1, y, '\xBA', 1);
+	    myScreen.fillChar (mX + mWidth - 1, y, ' ', 1); // \xBA
 	    myScreen.fillColors (mX + mWidth - 1, y, getColor (cePopupBorder), 1);
 	}
     }

@@ -47,16 +47,17 @@ int LicenseScreen::processEvent (const Event& event)
 const MessageInfo LicenseScreen::mMsgs[] = {	  // .........1.........2.........3.........4.........5.........6.........7.........8
 						  // 12345678901234567890123456789012345678901234567890123456789012345678901234567890
 
-    { ceLicenseNormal,	    ceLicenseNormalSel,	    "" },
 #ifdef HERMIT_PRO
-    { ceLicenseHighlight,   ceLicenseHighlightSel,  "                 \xD1   \xD1   \xD1\xCD\xCD\xCD\xB8   \xD1\xCD\xCD\xCD\xB8   \xD1\xCD\xB8 \xD5\xCD\xD1   \xCD\xD1\xCD   \xD5\xCD\xD1\xCD\xB8   PRO       \xDA\xBF" },
+    { ceLicenseHighlight,   ceLicenseHighlightSel,  "                            __  __               __ PRO" },
 #else
-    { ceLicenseHighlight,   ceLicenseHighlightSel,  "                 \xD1   \xD1   \xD1\xCD\xCD\xCD\xB8   \xD1\xCD\xCD\xCD\xB8   \xD1\xCD\xB8 \xD5\xCD\xD1   \xCD\xD1\xCD   \xD5\xCD\xD1\xCD\xB8             \xDA\xBF" },
+    { ceLicenseHighlight,   ceLicenseHighlightSel,  "                            __  __               __" },
 #endif
-    { ceLicenseHighlight,   ceLicenseHighlightSel,  "            \xDA\xBF   \xB3   \xB3   \xB3       \xB3   \xB3   \xB3 \xB3 \xB3 \xB3    \xB3      \xB3          \xDA\xBF   \xC0\xD9" },
-    { ceLicenseHighlight,   ceLicenseHighlightSel,  "       \xDA\xBF   \xC0\xD9   \xC6\xCD\xCD\xCD\xB5   \xC6\xCD\xB5     \xC6\xCD\xCD\xD1\xBE   \xB3 \xD4\xCD\xBE \xB3    \xB3      \xB3     \xDA\xBF   \xC0\xD9" },
-    { ceLicenseHighlight,   ceLicenseHighlightSel,  "  \xDA\xBF   \xC0\xD9        \xB3   \xB3   \xB3       \xB3  \xC0\xBF   \xB3     \xB3    \xB3      \xB3     \xC0\xD9" },
-    { ceLicenseHighlight,   ceLicenseHighlightSel,  "  \xC0\xD9             \xCF   \xCF   \xCF\xCD\xCD\xCD\xBE   \xCF   \xCF   \xCF     \xCF   \xCD\xCF\xCD     \xCF" },
+    { ceLicenseHighlight,   ceLicenseHighlightSel,  "                           / / / /               \\/ __" },
+    { ceLicenseHighlight,   ceLicenseHighlightSel,  "                    /\\    / /_/ /__  _____  _    __/ /_              /\\" },
+    { ceLicenseHighlight,   ceLicenseHighlightSel,  "              /\\    \\/   / __  / - \\/ __/ \\/ \\  / / __/        /\\    \\/" },
+    { ceLicenseHighlight,   ceLicenseHighlightSel,  "        /\\    \\/        / / / /  __/ / / /\\/\\ \\/ / /_    /\\    \\/" },
+    { ceLicenseHighlight,   ceLicenseHighlightSel,  "        \\/             /_/ /_/\\___/_/ /_/   /_/_/\\__/    \\/" },
+    { ceLicenseNormal,	    ceLicenseNormalSel,	    "" },
     { ceLicenseNormal,	    ceLicenseNormalSel,	    VER_PROGINFO },
     { ceLicenseNormal,	    ceLicenseNormalSel,	    "" },
     { ceLicenseNormal,	    ceLicenseNormalSel,	    " Use the arrow and page keys to scroll the screen." },

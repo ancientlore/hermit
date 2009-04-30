@@ -82,12 +82,12 @@ BEGIN
             VALUE "Comments", "HERMIT lives in your shell!"
             VALUE "CompanyName", "Michael D. Lore"
             VALUE "FileDescription", "HERMIT file and command assistant"
-            VALUE "FileVersion", "1.3"
+            VALUE "FileVersion", "1.5"
             VALUE "InternalName", "HERMIT"
-            VALUE "LegalCopyright", "Copyright © 1996-2004 Michael D. Lore."
+            VALUE "LegalCopyright", "Copyright © 1996-2009 Michael D. Lore."
             VALUE "OriginalFilename", "hermit.exe"
             VALUE "ProductName", "HERMIT"
-            VALUE "ProductVersion", "1.3"
+            VALUE "ProductVersion", "1.5"
         END
     END
     BLOCK "VarFileInfo"

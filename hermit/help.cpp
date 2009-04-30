@@ -61,18 +61,19 @@ int HelpScreen::processEvent (const Event& event)
 }
 
 const MessageInfo HelpScreen::mMsgs[] = {	  // .........1.........2.........3.........4.........5.........6.........7.........8
-						  // 12345678901234567890123456789012345678901234567890123456789012345678901234567890
+											  // 12345678901234567890123456789012345678901234567890123456789012345678901234567890
 
-    { ceHelpNormal,	    ceHelpNormalSel,	    "" },
 #ifdef HERMIT_PRO
-    { ceHelpHighlight,	    ceHelpHighlightSel,	    "                 \xD1   \xD1   \xD1\xCD\xCD\xCD\xB8   \xD1\xCD\xCD\xCD\xB8   \xD1\xCD\xB8 \xD5\xCD\xD1   \xCD\xD1\xCD   \xD5\xCD\xD1\xCD\xB8   PRO       \xDA\xBF" },
+    { ceHelpHighlight,	    ceHelpHighlightSel,	    "                            __  __               __ PRO" },
 #else
-    { ceHelpHighlight,	    ceHelpHighlightSel,	    "                 \xD1   \xD1   \xD1\xCD\xCD\xCD\xB8   \xD1\xCD\xCD\xCD\xB8   \xD1\xCD\xB8 \xD5\xCD\xD1   \xCD\xD1\xCD   \xD5\xCD\xD1\xCD\xB8             \xDA\xBF" },
+    { ceHelpHighlight,	    ceHelpHighlightSel,	    "                            __  __               __" },
 #endif
-    { ceHelpHighlight,	    ceHelpHighlightSel,	    "            \xDA\xBF   \xB3   \xB3   \xB3       \xB3   \xB3   \xB3 \xB3 \xB3 \xB3    \xB3      \xB3          \xDA\xBF   \xC0\xD9" },
-    { ceHelpHighlight,	    ceHelpHighlightSel,	    "       \xDA\xBF   \xC0\xD9   \xC6\xCD\xCD\xCD\xB5   \xC6\xCD\xB5     \xC6\xCD\xCD\xD1\xBE   \xB3 \xD4\xCD\xBE \xB3    \xB3      \xB3     \xDA\xBF   \xC0\xD9" },
-    { ceHelpHighlight,	    ceHelpHighlightSel,	    "  \xDA\xBF   \xC0\xD9        \xB3   \xB3   \xB3       \xB3  \xC0\xBF   \xB3     \xB3    \xB3      \xB3     \xC0\xD9" },
-    { ceHelpHighlight,	    ceHelpHighlightSel,	    "  \xC0\xD9             \xCF   \xCF   \xCF\xCD\xCD\xCD\xBE   \xCF   \xCF   \xCF     \xCF   \xCD\xCF\xCD     \xCF" },
+    { ceHelpHighlight,	    ceHelpHighlightSel,	    "                           / / / /               \\/ __" },
+    { ceHelpHighlight,	    ceHelpHighlightSel,	    "                    /\\    / /_/ /__  _____  _    __/ /_              /\\" },
+    { ceHelpHighlight,	    ceHelpHighlightSel,	    "              /\\    \\/   / __  / - \\/ __/ \\/ \\  / / __/        /\\    \\/" },
+    { ceHelpHighlight,	    ceHelpHighlightSel,	    "        /\\    \\/        / / / /  __/ / / /\\/\\ \\/ / /_    /\\    \\/" },
+    { ceHelpHighlight,	    ceHelpHighlightSel,	    "        \\/             /_/ /_/\\___/_/ /_/   /_/_/\\__/    \\/" },
+    { ceHelpNormal,	    ceHelpNormalSel,	    "" },
     { ceLicenseNormal,	    ceLicenseNormalSel,	    VER_PROGINFO },
     { ceHelpNormal,	    ceHelpNormalSel,	    "" },
 #ifdef HERMIT_PRO

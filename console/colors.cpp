@@ -55,7 +55,7 @@ static WORD defaultColorTable[ceNumEntries] = {
 
     // Popup Windows
     FG_WHITE | FG_HIGH | BG_BLUE,		    // cePopupBackground
-    FG_WHITE | FG_HIGH | BG_BLUE,		    // cePopupBorder
+    FG_WHITE | FG_HIGH | BG_BLUE | BG_HIGH,		    // cePopupBorder
 
     // Fields in Popup windows
     FG_CYAN | FG_HIGH | BG_BLUE,		    // ceField
@@ -138,7 +138,7 @@ static WORD colorfulColorTable[ceNumEntries] = {
 
     // Popup Windows
     FG_YELLOW | FG_HIGH | BG_CYAN,		    // cePopupBackground
-    FG_YELLOW | FG_HIGH | BG_CYAN,		    // cePopupBorder
+    FG_BLUE | BG_WHITE | BG_HIGH,		    // cePopupBorder
 
     // Fields in Popup windows
     FG_YELLOW | FG_HIGH | BG_CYAN,		    // ceField
@@ -221,7 +221,7 @@ static WORD greyColorTable[ceNumEntries] = {
 
     // Popup Windows
     FG_WHITE | FG_HIGH | BG_HIGH,		    // cePopupBackground
-    FG_WHITE | FG_HIGH | BG_HIGH,		    // cePopupBorder
+    BG_WHITE | BG_HIGH,		    // cePopupBorder
 
     // Fields in Popup windows
     FG_WHITE | FG_HIGH | BG_HIGH,		    // ceField
@@ -304,7 +304,7 @@ static WORD forestColorTable[ceNumEntries] = {
 
     // Popup Windows
     FG_WHITE | FG_HIGH | BG_RED,		    // cePopupBackground
-    FG_WHITE | FG_HIGH | BG_RED,		    // cePopupBorder
+    FG_WHITE | FG_HIGH,		    // cePopupBorder
 
     // Fields in Popup windows
     FG_WHITE | FG_HIGH | BG_RED,		    // ceField
