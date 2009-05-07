@@ -674,7 +674,27 @@ char *Application::getBufferWithPrompts (const char *cmdBuf, int lCmd, int& mult
     noWaitMsg = 0;
     autoRefresh = 0;
 
-    // Prompt for each one
+	// get env var for list separator
+	char listsep[10];		    // buffer for env var
+	if (GetEnvironmentVariable ("HERMIT_LISTSEP", listsep, 10) > 0)
+		listsep[9] = 0;
+	else {
+		listsep[0] = ' ';
+		listsep[1] = 0;
+	}
+	int listsepSize = strlen(listsep);
+
+	// get env var for list quote
+	char listquote[10];		    // buffer for env var
+	if (GetEnvironmentVariable ("HERMIT_LISTQUOTE", listquote, 10) > 0)
+		listquote[9] = 0;
+	else {
+		listquote[0] = '"';
+		listquote[1] = 0;
+	}
+	int listquoteSize = strlen(listquote);
+
+	// Prompt for each one
     int k = 0;
     int m = 0;
     for (int i = 0; i < len; i++) {
@@ -719,7 +739,7 @@ char *Application::getBufferWithPrompts (const char *cmdBuf, int lCmd, int& mult
 	    while (!iter->done ()) {
 		File& file = *iter;
 		if (file.isTagged ()) {
-		    size += (int) strlen (file.getName ()) + (ispcmd (&cmdBuf[i],'q') ? 3 : 1);
+		    size += (int) strlen (file.getName ()) + (ispcmd (&cmdBuf[i],'q') ? 2 * listquoteSize + listsepSize : listsepSize);
 		    tagged = 1;
 		}
 		(*iter)++;
@@ -729,7 +749,7 @@ char *Application::getBufferWithPrompts (const char *cmdBuf, int lCmd, int& mult
 	    // if no files tagged, use current
 	    if (tagged == 0) {
 		try {
-		    size += (int) strlen (mScroller->getCurrentFile ().getName ()) + (cmdBuf[i] == '\x06' ? 3 : 1);
+		    size += (int) strlen (mScroller->getCurrentFile ().getName ()) + (cmdBuf[i] == '\x06' ? 2 * listquoteSize + listsepSize : listsepSize);
 		}
 		catch (const AppException& info) {
 		    if (info.code() != ERR_NOT_FOUND)  // ERR_NOT_FOUND happens for empty file directories
@@ -771,21 +791,28 @@ char *Application::getBufferWithPrompts (const char *cmdBuf, int lCmd, int& mult
 	    // insert all tagged files
 	    int tagged = 0;
 	    FileIterator *iter = mScroller->getIterator ();
-	    while (!iter->done ()) {
+	    bool first = true;
+		while (!iter->done ()) {
 		File& file = *iter;
 		if (file.isTagged ()) {
+			if (!first) {
+				strcpy (&buffer[j], listsep);
+				j += listsepSize;
+			}
+			else
+				first = false;
 		    if (ispcmd (&cmdBuf[i], 'q')) {
-			strcpy (&buffer[j], "\"");
-			j++;
+			strcpy (&buffer[j], listquote);
+			j += listquoteSize;
 		    }
 		    strcpy (&buffer[j], file.getName ());
 		    j += (int) strlen (file.getName ());
 		    if (ispcmd (&cmdBuf[i], 'q')) {
-			strcpy (&buffer[j], "\"");
-			j++;
+			strcpy (&buffer[j], listquote);
+			j += listquoteSize;
 		    }
-		    strcpy (&buffer[j], " ");
-		    j++;
+		    //strcpy (&buffer[j], listsep);
+		    //j += listsepSize;
 		    tagged = 1;
 		}
 		(*iter)++;
@@ -796,17 +823,17 @@ char *Application::getBufferWithPrompts (const char *cmdBuf, int lCmd, int& mult
 	    if (tagged == 0) {
 		try {
 		    if (ispcmd (&cmdBuf[i], 'q')) {
-			strcpy (&buffer[j], "\"");
-			j++;
+			strcpy (&buffer[j], listquote);
+			j += listquoteSize;
 		    }
 		    strcpy (&buffer[j], mScroller->getCurrentFile ().getName ());
 		    j += (int) strlen (mScroller->getCurrentFile ().getName ());
 		    if (ispcmd (&cmdBuf[i], 'q')) {
-			strcpy (&buffer[j], "\"");
-			j++;
+			strcpy (&buffer[j], listquote);
+			j += listquoteSize;
 		    }
-		    strcpy (&buffer[j], " ");
-		    j++;
+		    //strcpy (&buffer[j], listsep);
+		    //j += listsepSize;
 		}
 		catch (const AppException& info) {
 		    if (info.code() != ERR_NOT_FOUND)  // ERR_NOT_FOUND happens for empty file directories

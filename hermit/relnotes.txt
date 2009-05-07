@@ -146,6 +146,22 @@ Environment variables and other stuff
     which asks HERMIT to insert the current directory name.  If you type
     it yourself you should type the correct separator.
 
+    When using Microsoft PowerShell, it is useful to define HERMIT_LISTSEP
+    to a comma, and HERMIT_LISTQUOTE to a single quote. This allows the
+    file list to be treated as an array very easily. For instance, the
+    command:
+
+        foreach ($x in @(!q)) { echo $x }
+
+    would become:
+
+        foreach ($x in @('notes.txt','charges.xls')) { echo $x }
+
+    PowerShell doesn't parse the command correctly when the default
+    HERMIT_LISTQUOTE of a double-quote is used. Additionally, PowerShell
+    arrays are comma-separated so the default HERMIT_LISTSEP of a single
+    space doesn't work out.
+
 Getting support
 
     HERMIT is supported via electronic mail on an "as I am available" basis.
@@ -157,7 +173,7 @@ Getting support
     keep that in mind.
 
     Send email to: hermit@skyegg.com
-	http://software.skyegg.com/
+        http://software.skyegg.com/
 	
 Reporting a bug
 
