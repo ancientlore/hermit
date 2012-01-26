@@ -1,4 +1,4 @@
-![Hermit](https://github.com/ancientlore/hermit/blob/master/docs/hermitbanner.jpg?raw=true)
+![Hermit](https://github.com/ancientlore/hermit/blob/master/docs/hermitbanner.gif?raw=true)
 
 Copyright © 1996-2012 Michael D. Lore. All Rights Reserved.
 
@@ -20,5 +20,5 @@ The HERMIT download includes the [Release Notes](https://github.com/ancientlore/
 
 Also check out the screen shot:
 
-![Screenshot](https://github.com/ancientlore/hermit/blob/master/docs/screenshot.jpg?raw=true)
+![Screenshot](https://github.com/ancientlore/hermit/blob/master/docs/screenshot.gif?raw=true)
 
